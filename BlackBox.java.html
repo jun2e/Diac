@@ -1,0 +1,97 @@
+<html>
+<head>
+<title>BlackBox.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #cf8e6d;}
+.s1 { color: #bcbec4;}
+.s2 { color: #bcbec4;}
+.s3 { color: #2aacb8;}
+.s4 { color: #6aab73;}
+</style>
+</head>
+<body bgcolor="#1e1f22">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+BlackBox.java</font>
+</center></td></tr></table>
+<pre><span class="s0">package </span><span class="s1">chap_07</span><span class="s2">;</span>
+
+<span class="s0">import </span><span class="s1">java</span><span class="s2">.</span><span class="s1">beans</span><span class="s2">.</span><span class="s1">PropertyEditorSupport</span><span class="s2">;</span>
+
+<span class="s0">public class </span><span class="s1">BlackBox </span><span class="s2">{</span>
+    <span class="s1">String modelname</span><span class="s2">;</span>
+    <span class="s1">String resolution</span><span class="s2">;</span>
+    <span class="s0">int </span><span class="s1">price</span><span class="s2">;</span>
+    <span class="s1">String color</span><span class="s2">;</span>
+    <span class="s0">int </span><span class="s1">serialNumber</span><span class="s2">;</span>
+
+    <span class="s0">static  int </span><span class="s1">counter </span><span class="s2">= </span><span class="s3">0</span><span class="s2">;</span>
+    <span class="s0">static boolean </span><span class="s1">canAutoReport </span><span class="s2">= </span><span class="s0">false</span><span class="s2">;</span>
+
+    <span class="s1">BlackBox</span><span class="s2">(){</span>
+        <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s4">&quot;기본 생성자 호출&quot;</span><span class="s2">);</span>
+        <span class="s0">this</span><span class="s2">.</span><span class="s1">serialNumber </span><span class="s2">= ++</span><span class="s1">counter</span><span class="s2">;</span>
+        <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s4">&quot;새로운 시리얼 넘버를 발급받았습니다.&quot; </span><span class="s2">+ </span><span class="s0">this</span><span class="s2">.</span><span class="s1">serialNumber</span><span class="s2">);</span>
+    <span class="s2">}</span>
+
+    <span class="s1">BlackBox</span><span class="s2">(</span><span class="s1">String modelname</span><span class="s2">, </span><span class="s1">String resolution</span><span class="s2">, </span><span class="s0">int </span><span class="s1">price</span><span class="s2">, </span><span class="s1">String color</span><span class="s2">) {</span>
+        <span class="s0">this</span><span class="s2">();</span>
+
+        <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s4">&quot;사용자 정의 생성자 호출&quot;</span><span class="s2">);</span>
+        <span class="s0">this</span><span class="s2">.</span><span class="s1">modelname </span><span class="s2">= </span><span class="s1">modelname</span><span class="s2">;</span>
+        <span class="s0">this</span><span class="s2">.</span><span class="s1">resolution </span><span class="s2">= </span><span class="s1">resolution</span><span class="s2">;</span>
+        <span class="s0">this</span><span class="s2">.</span><span class="s1">price </span><span class="s2">= </span><span class="s1">price</span><span class="s2">;</span>
+        <span class="s0">this</span><span class="s2">.</span><span class="s1">color </span><span class="s2">= </span><span class="s1">color</span><span class="s2">;</span>
+    <span class="s2">}</span>
+
+    <span class="s0">void </span><span class="s1">AutoReport</span><span class="s2">() {</span>
+        <span class="s0">if </span><span class="s2">(</span><span class="s1">canAutoReport</span><span class="s2">) {</span>
+            <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s4">&quot;충돌이 감지되어 자동으로 신고합니다.&quot;</span><span class="s2">);</span>
+        <span class="s2">} </span><span class="s0">else </span><span class="s2">{</span>
+            <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s4">&quot;자동 신고 기능이 지원되지 않습니다.&quot;</span><span class="s2">);</span>
+        <span class="s2">}</span>
+    <span class="s2">}</span>
+
+    <span class="s0">void </span><span class="s1">insertMemoryCard</span><span class="s2">(</span><span class="s0">int </span><span class="s1">capacity</span><span class="s2">) {</span>
+        <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s4">&quot;메모리 카드가 삽입되었습니다.&quot;</span><span class="s2">);</span>
+        <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s4">&quot;용량은 &quot; </span><span class="s2">+ </span><span class="s1">capacity </span><span class="s2">+ </span><span class="s4">&quot;GB 입니다&quot;</span><span class="s2">);</span>
+    <span class="s2">}</span>
+
+    <span class="s0">int </span><span class="s1">getVideoFileCount</span><span class="s2">(</span><span class="s0">int </span><span class="s1">type</span><span class="s2">) {</span>
+        <span class="s0">if </span><span class="s2">(</span><span class="s1">type </span><span class="s2">== </span><span class="s3">1</span><span class="s2">) {</span>
+            <span class="s0">return </span><span class="s3">9</span><span class="s2">;</span>
+        <span class="s2">} </span><span class="s0">else if </span><span class="s2">(</span><span class="s1">type </span><span class="s2">== </span><span class="s3">2</span><span class="s2">) {</span>
+            <span class="s0">return </span><span class="s3">1</span><span class="s2">;</span>
+        <span class="s2">}</span>
+        <span class="s0">return </span><span class="s3">10</span><span class="s2">;</span>
+    <span class="s2">}</span>
+
+    <span class="s0">void </span><span class="s1">record</span><span class="s2">(</span><span class="s0">boolean </span><span class="s1">showDateTime</span><span class="s2">, </span><span class="s0">boolean </span><span class="s1">showSpeed</span><span class="s2">, </span><span class="s0">int </span><span class="s1">min</span><span class="s2">) {</span>
+        <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s4">&quot;녹화를 시작합니다.&quot;</span><span class="s2">);</span>
+        <span class="s0">if </span><span class="s2">(</span><span class="s1">showDateTime</span><span class="s2">) {</span>
+            <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s4">&quot;영상에 날짜 정보가 표시됩니다.&quot;</span><span class="s2">);</span>
+        <span class="s2">}</span>
+        <span class="s0">if </span><span class="s2">(</span><span class="s1">showSpeed</span><span class="s2">) {</span>
+            <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s4">&quot;영상에 속도 정보가 표시됩니다.&quot;</span><span class="s2">);</span>
+        <span class="s2">}</span>
+        <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s4">&quot;영상은 &quot; </span><span class="s2">+ </span><span class="s1">min </span><span class="s2">+ </span><span class="s4">&quot;분 단위로 기록됩니다.&quot;</span><span class="s2">);</span>
+    <span class="s2">}</span>
+
+    <span class="s0">void </span><span class="s1">record</span><span class="s2">() {</span>
+        <span class="s1">record</span><span class="s2">(</span><span class="s0">true</span><span class="s2">,</span><span class="s0">true</span><span class="s2">,</span><span class="s3">5</span><span class="s2">);</span>
+    <span class="s2">}</span>
+
+    <span class="s0">static void </span><span class="s1">callServiceCenter</span><span class="s2">() {</span>
+        <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s4">&quot;서비스 센터(1588 - 0000)로 연결됩니다.&quot;</span><span class="s2">);</span>
+    <span class="s2">}</span>
+
+    <span class="s0">void </span><span class="s1">appendModelName</span><span class="s2">(</span><span class="s1">String modelname</span><span class="s2">) {</span>
+        <span class="s0">this</span><span class="s2">.</span><span class="s1">modelname </span><span class="s2">+= </span><span class="s1">modelname</span><span class="s2">;</span>
+    <span class="s2">}</span>
+<span class="s2">}</span>
+
+</pre>
+</body>
+</html>
